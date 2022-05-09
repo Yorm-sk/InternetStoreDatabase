@@ -10,9 +10,41 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserDao implements IUserDao {
     private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
+    private static UserDao userDao;
+    private final List<User> users = new ArrayList<>();
+
+    private UserDao(){
+        Connection conn = SQLConnector.createConnection();
+        try (PreparedStatement prepSt = conn.prepareStatement("SELECT * FROM users")){
+            ResultSet rs = prepSt.executeQuery();
+            while (rs.next()){
+                User u = new User(rs.getString("name"), rs.getString("email"),
+                        rs.getShort("age"));
+                u.setId(rs.getLong("id"));
+                users.add(u);
+            }
+        } catch (SQLException e){
+            LOGGER.warn(e.getMessage());
+        } catch (NullPointerException e){
+            LOGGER.warn("User is empty");
+        }
+        SQLConnector.closeConnection(conn);
+    }
+
+    public void showAllUsers(){
+        users.forEach(LOGGER::info);
+    }
+
+    public static UserDao getInstance(){
+        if (userDao == null) userDao = new UserDao();
+        return userDao;
+    }
 
     @Override
     public User getEntity(long id) {
@@ -44,6 +76,7 @@ public class UserDao implements IUserDao {
             preparedStatement.setString(2,user.getEmail());
             preparedStatement.setShort(3, user.getAge());
             preparedStatement.executeUpdate();
+            users.add(user);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -58,6 +91,7 @@ public class UserDao implements IUserDao {
         try (PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM users WHERE id = ?")){
             preparedStatement.setLong(1, user.getId());
             preparedStatement.executeUpdate();
+            users.remove(user);
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
         }
@@ -76,6 +110,10 @@ public class UserDao implements IUserDao {
             preparedStatement.setShort(3, user.getAge());
             preparedStatement.setLong(4, user.getId());
             preparedStatement.executeUpdate();
+            User u = users.stream().filter(user1 -> user1.getId() == user.getId()).collect(Collectors.toList()).get(0);
+            u.setName(user.getName());
+            u.setAge(user.getAge());
+            u.setEmail(user.getEmail());
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
         }

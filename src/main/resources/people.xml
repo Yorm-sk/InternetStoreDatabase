@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+    <studentsGroup name ="group1">
+        <student name = "Oleg" age = "23"/>
+        <student name = "Ivan" age = "22"/>
+        <student name = "Dima" age = "20"/>
+    </studentsGroup>
+    <studentsGroup name ="group2">
+        <student name = "Oksana" age = "21"/>
+        <student name = "Inna" age = "24"/>
+        <student name = "Lera" age = "19"/>
+    </studentsGroup>
+    <teachers>
+        <teacher name = "Alexander" age = "33"/>
+        <teacher name = "Leonid" age = "41"/>
+    </teachers>
+</people>
