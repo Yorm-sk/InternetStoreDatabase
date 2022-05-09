@@ -1,1 +1,1 @@
-There is 2 files for mysql database
+There is program for with SQL database, scheme is in recources. And there is a parser.
