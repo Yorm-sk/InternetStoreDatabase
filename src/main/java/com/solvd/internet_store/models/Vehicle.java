@@ -1,7 +1,12 @@
 package com.solvd.internet_store.models;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
+@XmlRootElement(name = "Vehicle")
 public class Vehicle {
     private long id;
     private String type;
@@ -33,6 +38,7 @@ public class Vehicle {
         this.deliveryService = deliveryService;
     }
 
+    @XmlAttribute
     public long getId() {
         return id;
     }
@@ -41,6 +47,7 @@ public class Vehicle {
         this.id = id;
     }
 
+    @XmlElement
     public String getType() {
         return type;
     }
@@ -49,6 +56,7 @@ public class Vehicle {
         this.type = type;
     }
 
+    @XmlTransient
     public Driver getDriver() {
         return driver;
     }
@@ -57,6 +65,7 @@ public class Vehicle {
         this.driver = driver;
     }
 
+    @XmlTransient
     public DeliveryService getDeliveryService() {
         return deliveryService;
     }
@@ -65,6 +74,7 @@ public class Vehicle {
         this.deliveryService = deliveryService;
     }
 
+    @XmlTransient
     public List<VehicleService> getVehicleServices() {
         return vehicleServices;
     }

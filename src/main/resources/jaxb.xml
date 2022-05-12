@@ -2,12 +2,10 @@
 <Driver id="1">
     <experience>Experienced</experience>
     <vehicles>
-        <vehicle>
-            <id>1</id>
+        <vehicle id="1">
             <type>car</type>
         </vehicle>
-        <vehicle>
-            <id>2</id>
+        <vehicle id="2">
             <type>ship</type>
         </vehicle>
     </vehicles>
