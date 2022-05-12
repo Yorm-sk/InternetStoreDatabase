@@ -1,4 +1,4 @@
-package com.solvd.xml_parser.classes_for_parsing;
+package com.solvd.xml_parsers.sax.classes_for_parsing;
 
 public class Person {
     private String name;

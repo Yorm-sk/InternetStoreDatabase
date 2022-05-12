@@ -1,13 +1,12 @@
-package com.solvd.xml_parser;
+package com.solvd.xml_parsers.sax;
 
-import com.solvd.xml_parser.classes_for_parsing.Student;
-import com.solvd.xml_parser.classes_for_parsing.StudentsDAO;
-import com.solvd.xml_parser.classes_for_parsing.Teacher;
-import com.solvd.xml_parser.classes_for_parsing.TeachersDAO;
+import com.solvd.xml_parsers.sax.classes_for_parsing.Student;
+import com.solvd.xml_parsers.sax.classes_for_parsing.StudentsDAO;
+import com.solvd.xml_parsers.sax.classes_for_parsing.Teacher;
+import com.solvd.xml_parsers.sax.classes_for_parsing.TeachersDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class XMLHandler extends DefaultHandler {
@@ -24,12 +23,12 @@ public class XMLHandler extends DefaultHandler {
     }
 
     @Override
-    public void startDocument() throws SAXException {
+    public void startDocument() {
         LOGGER.info("We are at begging of xml document");
     }
 
     @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) {
         if (qName.equals("student")) {
             String name = attributes.getValue("name");
             int age = Integer.parseInt(attributes.getValue("age"));
@@ -43,7 +42,7 @@ public class XMLHandler extends DefaultHandler {
     }
 
     @Override
-    public void endDocument() throws SAXException {
+    public void endDocument() {
         LOGGER.info("We are at end of xml document");
     }
 }

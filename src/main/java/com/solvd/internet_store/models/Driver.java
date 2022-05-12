@@ -1,7 +1,9 @@
 package com.solvd.internet_store.models;
 
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@XmlRootElement(name = "Driver")
 public class Driver {
     private long id;
     private String experience;
@@ -18,6 +20,7 @@ public class Driver {
         this.vehicles = vehicles;
     }
 
+    @XmlAttribute
     public long getId() {
         return id;
     }
@@ -26,6 +29,7 @@ public class Driver {
         this.id = id;
     }
 
+    @XmlElement
     public String getExperience() {
         return experience;
     }
@@ -34,6 +38,7 @@ public class Driver {
         this.experience = experience;
     }
 
+    @XmlTransient
     public User getUser() {
         return user;
     }
@@ -42,6 +47,8 @@ public class Driver {
         this.user = user;
     }
 
+    @XmlElementWrapper
+    @XmlElement(name = "vehicle")
     public List<Vehicle> getVehicles() {
         return vehicles;
     }

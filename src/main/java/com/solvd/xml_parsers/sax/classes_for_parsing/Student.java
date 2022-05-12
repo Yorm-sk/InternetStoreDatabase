@@ -1,6 +1,4 @@
-package com.solvd.xml_parser.classes_for_parsing;
-
-import com.solvd.xml_parser.classes_for_parsing.Person;
+package com.solvd.xml_parsers.sax.classes_for_parsing;
 
 public class Student extends Person {
     public Student() {

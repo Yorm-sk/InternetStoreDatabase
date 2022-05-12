@@ -12,6 +12,11 @@ public class Vehicle {
     public Vehicle() {
     }
 
+    public Vehicle(long id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+
     public Vehicle(long id, String type, Driver driver, DeliveryService deliveryService,
                    List<VehicleService> vehicleServices) {
         this.id = id;

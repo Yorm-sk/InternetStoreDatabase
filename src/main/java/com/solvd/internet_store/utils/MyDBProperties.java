@@ -1,4 +1,4 @@
-package com.solvd.internet_store.propeties;
+package com.solvd.internet_store.utils;
 
 import java.io.FileReader;
 import java.io.IOException;

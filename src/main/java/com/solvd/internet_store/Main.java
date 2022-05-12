@@ -8,13 +8,9 @@ import org.apache.logging.log4j.Logger;
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
     public static void main(String[] args) {
-        UserDao userDao = UserDao.getInstance();
-        userDao.showAllUsers();
-        User userToUpdate = userDao.getEntity(3);
-        userToUpdate.setName("Vadim");
-        userToUpdate.setEmail("rvad@gmail.com");
-        userToUpdate.setAge((short) 27);
-        userDao.updateEntity(userToUpdate);
-        userDao.showAllUsers();
+        UserDao users = UserDao.getInstance();
+        users.showAllUsers();
+        users.deleteEntity(users.getEntity(14));
+        users.showAllUsers();
     }
 }

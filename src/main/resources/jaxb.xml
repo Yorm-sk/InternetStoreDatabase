@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Driver id="1">
+    <experience>Experienced</experience>
+    <vehicles>
+        <vehicle>
+            <id>1</id>
+            <type>car</type>
+        </vehicle>
+        <vehicle>
+            <id>2</id>
+            <type>ship</type>
+        </vehicle>
+    </vehicles>
+</Driver>

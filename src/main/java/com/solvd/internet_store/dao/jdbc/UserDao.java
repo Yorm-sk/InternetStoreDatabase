@@ -1,40 +1,36 @@
 package com.solvd.internet_store.dao.jdbc;
 
-import com.solvd.internet_store.connector.SQLConnector;
 import com.solvd.internet_store.dao.IUserDao;
 import com.solvd.internet_store.models.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserDao implements IUserDao {
+public class UserDao extends AbstractDao implements IUserDao {
     private static final Logger LOGGER = LogManager.getLogger(UserDao.class);
     private static UserDao userDao;
     private final List<User> users = new ArrayList<>();
 
     private UserDao(){
-        Connection conn = SQLConnector.createConnection();
-        try (PreparedStatement prepSt = conn.prepareStatement("SELECT * FROM users")){
-            ResultSet rs = prepSt.executeQuery();
-            while (rs.next()){
-                User u = new User(rs.getString("name"), rs.getString("email"),
-                        rs.getShort("age"));
-                u.setId(rs.getLong("id"));
+        setConnection();
+        setPreparedStatement("SELECT * FROM users");
+        setResultSet();
+        try {
+            while (resultSet.next()){
+                User u = new User(resultSet.getString("name"), resultSet.getString("email"),
+                        resultSet.getShort("age"));
+                u.setId(resultSet.getLong("id"));
                 users.add(u);
             }
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
-        } catch (NullPointerException e){
-            LOGGER.warn("User is empty");
         }
-        SQLConnector.closeConnection(conn);
+        closeAll();
     }
 
     public void showAllUsers(){
@@ -48,63 +44,69 @@ public class UserDao implements IUserDao {
 
     @Override
     public User getEntity(long id) {
-        Connection conn = SQLConnector.createConnection();
+        LOGGER.info("Get user by id - " + id);
         User user = null;
-        try (PreparedStatement preparedStatement = conn.prepareStatement(
-                "SELECT * FROM users WHERE id = ?")){
+        setConnection();
+        setPreparedStatement("SELECT * FROM users WHERE id = ?");
+        try {
             preparedStatement.setLong(1, id);
-            ResultSet rs = preparedStatement.executeQuery();
-            rs.next();
-            user = new User(rs.getString("name"), rs.getString("email"),
-                    rs.getShort("age"));
-            user.setId(rs.getLong("id"));
-            rs.close();
-        } catch (SQLException e){
+            setResultSet();
+            resultSet.next();
+            user = new User(resultSet.getString("name"), resultSet.getString("email"),
+                    resultSet.getShort("age"));
+            user.setId(resultSet.getLong("id"));
+        } catch (SQLException e) {
             LOGGER.warn(e.getMessage());
         }
-        SQLConnector.closeConnection(conn);
+        closeAll();
+        LOGGER.info("Done...");
         return user;
     }
 
     @Override
     public void createEntity(User user) {
         LOGGER.info("Creating new user");
-        Connection conn = SQLConnector.createConnection();
-        try (PreparedStatement preparedStatement = conn.prepareStatement(
-                "INSERT INTO users (name, email, age) VALUES (?, ?, ?)")) {
+        setConnection();
+        setPreparedStatement("INSERT INTO users (name, email, age) VALUES (?, ?, ?)");
+        try {
             preparedStatement.setString(1,user.getName());
             preparedStatement.setString(2,user.getEmail());
             preparedStatement.setShort(3, user.getAge());
             preparedStatement.executeUpdate();
+            setPreparedStatement("SELECT * FROM users", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            setResultSet();
+            resultSet.last();
+            user.setId(resultSet.getLong("id"));
             users.add(user);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException e) {
+            LOGGER.warn(e.getMessage());
         }
-        SQLConnector.closeConnection(conn);
+        closeAll();
         LOGGER.info("Done...");
     }
 
     @Override
     public void deleteEntity(User user) {
         LOGGER.info("DELETING user with id - " + user.getId());
-        Connection conn = SQLConnector.createConnection();
-        try (PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM users WHERE id = ?")){
+        setConnection();
+        try {
+            setPreparedStatement("DELETE FROM users WHERE id = ?");
             preparedStatement.setLong(1, user.getId());
             preparedStatement.executeUpdate();
             users.remove(user);
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
         }
-        SQLConnector.closeConnection(conn);
+        closeAll();
         LOGGER.info("Done...");
     }
 
     @Override
     public void updateEntity(User user) {
         LOGGER.info("Updating user with id - " + user.getId());
-        Connection conn = SQLConnector.createConnection();
-        try (PreparedStatement preparedStatement = conn.prepareStatement(
-                "UPDATE users SET name = ?, email = ?, age = ? WHERE id = ?")){
+        setConnection();
+        try {
+            setPreparedStatement("UPDATE users SET name = ?, email = ?, age = ? WHERE id = ?");
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setShort(3, user.getAge());
@@ -117,7 +119,7 @@ public class UserDao implements IUserDao {
         } catch (SQLException e){
             LOGGER.warn(e.getMessage());
         }
-        SQLConnector.closeConnection(conn);
+        closeAll();
         LOGGER.info("Done");
     }
 }
