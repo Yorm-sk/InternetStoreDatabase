@@ -3,32 +3,32 @@ package com.solvd.internet_store.models;
 import java.util.List;
 
 public class Order {
+
     private long id;
     private String type;
     private  String date;
-    private DeliveryService deliveryService;
-    private Costumer costumer;
+    private long deliveryServiceId;
+    private long costumerId;
     private List<Product> products;
 
     public Order() {
     }
 
-    public Order(long id, String type, String date, DeliveryService deliveryService, Costumer costumer,
+    public Order(String type, String date, long deliveryServiceId, long costumerId,
                  List<Product> products) {
-        this.id = id;
         this.type = type;
         this.date = date;
-        this.deliveryService = deliveryService;
-        this.costumer = costumer;
+        this.deliveryServiceId = deliveryServiceId;
+        this.costumerId = costumerId;
         this.products = products;
     }
 
-    public Order(long id, String type, String date, DeliveryService deliveryService, Costumer costumer) {
+    public Order(long id, String type, String date, long deliveryServiceId, long costumerId) {
         this.id = id;
         this.type = type;
         this.date = date;
-        this.deliveryService = deliveryService;
-        this.costumer = costumer;
+        this.deliveryServiceId = deliveryServiceId;
+        this.costumerId = costumerId;
     }
 
     public long getId() {
@@ -55,20 +55,20 @@ public class Order {
         this.date = date;
     }
 
-    public DeliveryService getDeliveryService() {
-        return deliveryService;
+    public long getDeliveryServiceId() {
+        return deliveryServiceId;
     }
 
-    public void setDeliveryService(DeliveryService deliveryService) {
-        this.deliveryService = deliveryService;
+    public void setDeliveryServiceId(long deliveryServiceId) {
+        this.deliveryServiceId = deliveryServiceId;
     }
 
-    public Costumer getCostumer() {
-        return costumer;
+    public long getCostumerId() {
+        return costumerId;
     }
 
-    public void setCostumer(Costumer costumer) {
-        this.costumer = costumer;
+    public void setCostumerId(long costumerId) {
+        this.costumerId = costumerId;
     }
 
     public List<Product> getProducts() {
@@ -85,8 +85,8 @@ public class Order {
                 "id=" + id +
                 ", type='" + type + '\'' +
                 ", date='" + date + '\'' +
-                ", deliveryService=" + deliveryService +
-                ", costumer=" + costumer +
+                ", deliveryServiceId=" + deliveryServiceId +
+                ", costumerId=" + costumerId +
                 ", products=" + products +
                 '}';
     }

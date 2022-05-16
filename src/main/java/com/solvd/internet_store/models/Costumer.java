@@ -11,15 +11,13 @@ public class Costumer {
     public Costumer() {
     }
 
-    public Costumer(long id, String phone_number, User user, List<Order> orders) {
-        this.id = id;
+    public Costumer(String phone_number, User user, List<Order> orders) {
         this.phone_number = phone_number;
         this.user = user;
         this.orders = orders;
     }
 
-    public Costumer(long id, String phone_number, User user) {
-        this.id = id;
+    public Costumer(String phone_number, User user) {
         this.phone_number = phone_number;
         this.user = user;
     }
@@ -59,10 +57,10 @@ public class Costumer {
     @Override
     public String toString() {
         return "Costumer{" +
-                "id=" + id +
-                ", phone_number='" + phone_number + '\'' +
-                ", user=" + user +
-                ", orders=" + orders +
+                "id=" + id + "\n" +
+                "phone_number='" + phone_number + '\'' + "\n" +
+                "user=" + user + "\n" +
+                "orders=" + orders +
                 '}';
     }
 }

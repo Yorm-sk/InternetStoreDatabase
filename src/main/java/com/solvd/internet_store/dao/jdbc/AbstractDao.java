@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public abstract class AbstractDao {
     private static final Logger LOGGER = LogManager.getLogger(AbstractDao.class);
-    protected Connection connection;
+    private Connection connection;
     protected ResultSet resultSet;
     protected PreparedStatement preparedStatement;
 

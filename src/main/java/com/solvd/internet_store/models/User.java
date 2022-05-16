@@ -12,6 +12,12 @@ public class User {
     }
 
     public User(String name, String email, short age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+
+    public User(long id, String name, String email, short age) {
         this.id = id;
         this.name = name;
         this.email = email;

@@ -6,39 +6,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import java.util.List;
 
-@XmlRootElement(name = "Vehicle")
 public class Vehicle {
     private long id;
     private String type;
-    private Driver driver;
-    private DeliveryService deliveryService;
+    private long driverId;
+    private long deliveryServiceId;
     private List<VehicleService> vehicleServices;
 
     public Vehicle() {
     }
 
-    public Vehicle(long id, String type) {
-        this.id = id;
+    public Vehicle(String type, long driverId, long deliveryServiceId, List<VehicleService> vehicleServices) {
         this.type = type;
-    }
-
-    public Vehicle(long id, String type, Driver driver, DeliveryService deliveryService,
-                   List<VehicleService> vehicleServices) {
-        this.id = id;
-        this.type = type;
-        this.driver = driver;
-        this.deliveryService = deliveryService;
+        this.driverId = driverId;
+        this.deliveryServiceId = deliveryServiceId;
         this.vehicleServices = vehicleServices;
     }
 
-    public Vehicle(long id, String type, Driver driver, DeliveryService deliveryService) {
-        this.id = id;
-        this.type = type;
-        this.driver = driver;
-        this.deliveryService = deliveryService;
-    }
-
-    @XmlAttribute
     public long getId() {
         return id;
     }
@@ -47,7 +31,6 @@ public class Vehicle {
         this.id = id;
     }
 
-    @XmlElement
     public String getType() {
         return type;
     }
@@ -56,25 +39,22 @@ public class Vehicle {
         this.type = type;
     }
 
-    @XmlTransient
-    public Driver getDriver() {
-        return driver;
+    public long getDriverId() {
+        return driverId;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
+    public void setDriverId(long driverId) {
+        this.driverId = driverId;
     }
 
-    @XmlTransient
-    public DeliveryService getDeliveryService() {
-        return deliveryService;
+    public long getDeliveryServiceId() {
+        return deliveryServiceId;
     }
 
-    public void setDeliveryService(DeliveryService deliveryService) {
-        this.deliveryService = deliveryService;
+    public void setDeliveryServiceId(long deliveryServiceId) {
+        this.deliveryServiceId = deliveryServiceId;
     }
 
-    @XmlTransient
     public List<VehicleService> getVehicleServices() {
         return vehicleServices;
     }
@@ -88,8 +68,8 @@ public class Vehicle {
         return "Vehicle{" +
                 "id=" + id +
                 ", type='" + type + '\'' +
-                ", driver=" + driver +
-                ", deliveryService=" + deliveryService +
+                ", driverId=" + driverId +
+                ", deliveryServiceId=" + deliveryServiceId +
                 ", vehicleServices=" + vehicleServices +
                 '}';
     }

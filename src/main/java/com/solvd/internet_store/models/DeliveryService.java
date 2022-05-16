@@ -13,14 +13,20 @@ public class DeliveryService {
     public DeliveryService() {
     }
 
-    public DeliveryService(long id, String name, DeliveryWorker deliveryWorker, List<Vehicle> vehicles,
-                           List<Storage> storages, List<Order> orders) {
-        this.id = id;
+    public DeliveryService(String name, DeliveryWorker deliveryWorker, List<Vehicle> vehicles, List<Storage> storages,
+                           List<Order> orders) {
         this.name = name;
         this.deliveryWorker = deliveryWorker;
         this.vehicles = vehicles;
         this.storages = storages;
         this.orders = orders;
+    }
+
+    public DeliveryService(String name, DeliveryWorker deliveryWorker, List<Vehicle> vehicles, List<Storage> storages) {
+        this.name = name;
+        this.deliveryWorker = deliveryWorker;
+        this.vehicles = vehicles;
+        this.storages = storages;
     }
 
     public long getId() {
@@ -76,10 +82,10 @@ public class DeliveryService {
         return "DeliveryService{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", deliveryWorker=" + deliveryWorker +
-                ", vehicles=" + vehicles +
-                ", storages=" + storages +
-                ", orders=" + orders +
+                ", deliveryWorker=" + deliveryWorker + "\n" +
+                "vehicles=" + vehicles + "\n" +
+                "storages=" + storages + "\n" +
+                "orders=" + orders +
                 '}';
     }
 }
