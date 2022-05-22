@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Driver id="1">
-    <experience>Experienced</experience>
-    <vehicles>
-        <vehicle id="1">
-            <type>car</type>
-        </vehicle>
-        <vehicle id="2">
-            <type>ship</type>
-        </vehicle>
-    </vehicles>
-</Driver>
+<cat id="1">
+    <name>Stepan</name>
+    <owners>
+        <Owner id="1">
+            <amountOfCat>1</amountOfCat>
+            <name>Dima</name>
+        </Owner>
+        <Owner id="2">
+            <amountOfCat>2</amountOfCat>
+            <name>Masha</name>
+        </Owner>
+    </owners>
+</cat>
