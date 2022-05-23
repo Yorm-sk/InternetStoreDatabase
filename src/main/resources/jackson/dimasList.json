@@ -1,0 +1,22 @@
+[ {
+  "height" : 190,
+  "weight" : 62,
+  "field" : {
+    "size" : 6,
+    "drugs" : [ "weed, poppy" ]
+  }
+}, {
+  "height" : 141,
+  "weight" : 76,
+  "field" : {
+    "size" : 8,
+    "drugs" : [ "cannabis, poppy" ]
+  }
+}, {
+  "height" : 176,
+  "weight" : 65,
+  "field" : {
+    "size" : 19,
+    "drugs" : [ "cannabis, poppy", "weed" ]
+  }
+} ]

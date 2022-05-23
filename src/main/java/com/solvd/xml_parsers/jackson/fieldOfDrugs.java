@@ -1,13 +1,25 @@
 package com.solvd.xml_parsers.jackson;
 
+import java.util.List;
+
 public class fieldOfDrugs {
     private int size;
+    List<String> drugs;
 
     public fieldOfDrugs() {
     }
 
-    public fieldOfDrugs(int size) {
+    public fieldOfDrugs(int size, List<String> drugs) {
         this.size = size;
+        this.drugs = drugs;
+    }
+
+    public List<String> getDrugs() {
+        return drugs;
+    }
+
+    public void setDrugs(List<String> drugs) {
+        this.drugs = drugs;
     }
 
     public int getSize() {
@@ -22,6 +34,7 @@ public class fieldOfDrugs {
     public String toString() {
         return "fieldOfDrugs{" +
                 "size=" + size +
+                ", drugs=" + drugs +
                 '}';
     }
 }
