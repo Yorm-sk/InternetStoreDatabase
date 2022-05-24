@@ -1,14 +1,14 @@
 package com.solvd.xml_parsers.jackson;
 
-public class Dimas {
+public class Person {
     private int height;
     private int weight;
     private FieldOfDrugs field;
 
-    public Dimas() {
+    public Person() {
     }
 
-    public Dimas(int height, int weight, FieldOfDrugs field) {
+    public Person(int height, int weight, FieldOfDrugs field) {
         this.height = height;
         this.weight = weight;
         this.field = field;
@@ -40,7 +40,7 @@ public class Dimas {
 
     @Override
     public String toString() {
-        return "Dimas{" +
+        return "Person{" +
                 "height=" + height +
                 ", weight=" + weight +
                 ", field=" + field +
