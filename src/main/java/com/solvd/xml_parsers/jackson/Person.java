@@ -1,6 +1,7 @@
 package com.solvd.xml_parsers.jackson;
 
 public class Person {
+    private String name;
     private int height;
     private int weight;
     private FieldOfDrugs field;
@@ -8,7 +9,8 @@ public class Person {
     public Person() {
     }
 
-    public Person(int height, int weight, FieldOfDrugs field) {
+    public Person(String name, int height, int weight, FieldOfDrugs field) {
+        this.name = name;
         this.height = height;
         this.weight = weight;
         this.field = field;
@@ -38,10 +40,19 @@ public class Person {
         this.field = field;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
-                "height=" + height +
+                "name='" + name + '\'' +
+                ", height=" + height +
                 ", weight=" + weight +
                 ", field=" + field +
                 '}';
