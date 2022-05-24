@@ -15,9 +15,9 @@ public class Main {
             Dimas dimas = objectMapper.readValue(new File("src/main/resources/jackson/info.json"), Dimas.class);
             objectMapper.writeValue(new File("src/main/resources/jackson/dimasInfo.json"), dimas);
 
-            List<Dimas> dimasList = List.of(new Dimas(190, 62, new fieldOfDrugs(6 , List.of("weed, poppy"))),
-                    new Dimas(141, 76, new fieldOfDrugs(8 , List.of("cannabis, poppy"))),
-                    new Dimas(176, 65, new fieldOfDrugs(19 , List.of("cannabis, poppy", "weed"))));
+            List<Dimas> dimasList = List.of(new Dimas(190, 62, new FieldOfDrugs(6 , List.of("weed, poppy"))),
+                    new Dimas(141, 76, new FieldOfDrugs(8 , List.of("cannabis, poppy"))),
+                    new Dimas(176, 65, new FieldOfDrugs(19 , List.of("cannabis, poppy", "weed"))));
             objectMapper.writeValue(new File("src/main/resources/jackson/dimasList.json"), dimasList);
             List<Dimas> dimasListFromJson = objectMapper.readValue(new File("src/main/resources/jackson/dimasList.json"),
                     new TypeReference<>() {});

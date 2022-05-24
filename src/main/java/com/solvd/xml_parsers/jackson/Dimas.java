@@ -1,19 +1,14 @@
 package com.solvd.xml_parsers.jackson;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-
-
 public class Dimas {
     private int height;
     private int weight;
-    private fieldOfDrugs field;
+    private FieldOfDrugs field;
 
     public Dimas() {
     }
 
-    public Dimas(int height, int weight, fieldOfDrugs field) {
+    public Dimas(int height, int weight, FieldOfDrugs field) {
         this.height = height;
         this.weight = weight;
         this.field = field;
@@ -35,11 +30,11 @@ public class Dimas {
         this.weight = weight;
     }
 
-    public fieldOfDrugs getField() {
+    public FieldOfDrugs getField() {
         return field;
     }
 
-    public void setField(fieldOfDrugs field) {
+    public void setField(FieldOfDrugs field) {
         this.field = field;
     }
 

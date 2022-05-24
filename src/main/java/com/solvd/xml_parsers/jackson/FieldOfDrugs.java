@@ -2,14 +2,14 @@ package com.solvd.xml_parsers.jackson;
 
 import java.util.List;
 
-public class fieldOfDrugs {
+public class FieldOfDrugs {
     private int size;
     List<String> drugs;
 
-    public fieldOfDrugs() {
+    public FieldOfDrugs() {
     }
 
-    public fieldOfDrugs(int size, List<String> drugs) {
+    public FieldOfDrugs(int size, List<String> drugs) {
         this.size = size;
         this.drugs = drugs;
     }
