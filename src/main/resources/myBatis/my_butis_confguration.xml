@@ -3,7 +3,9 @@
 <configuration>
     <properties resource="db.properties">
     </properties>
-
+    <typeAliases>
+        <typeAlias type="com.solvd.internet_store.models.User" alias="User"/>
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
