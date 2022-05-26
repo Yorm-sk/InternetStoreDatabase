@@ -1,4 +1,4 @@
-package com.solvd.xml_parsers.jackson;
+package com.solvd.parsers.jackson;
 
 public class Person {
     private String name;

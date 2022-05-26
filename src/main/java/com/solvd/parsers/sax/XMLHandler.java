@@ -1,9 +1,9 @@
-package com.solvd.xml_parsers.sax;
+package com.solvd.parsers.sax;
 
-import com.solvd.xml_parsers.sax.classes_for_parsing.Student;
-import com.solvd.xml_parsers.sax.classes_for_parsing.StudentsDAO;
-import com.solvd.xml_parsers.sax.classes_for_parsing.Teacher;
-import com.solvd.xml_parsers.sax.classes_for_parsing.TeachersDAO;
+import com.solvd.parsers.sax.classes_for_parsing.Student;
+import com.solvd.parsers.sax.classes_for_parsing.StudentsDAO;
+import com.solvd.parsers.sax.classes_for_parsing.Teacher;
+import com.solvd.parsers.sax.classes_for_parsing.TeachersDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;

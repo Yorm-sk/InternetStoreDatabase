@@ -15,7 +15,7 @@ public class SQLConnector {
     private SQLConnector (){
         try {
             LOGGER.info("Register drive...");
-            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            Class.forName(MyDBProperties.driver).newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             LOGGER.warn(e.getMessage());
         }

@@ -8,6 +8,7 @@ public class MyDBProperties {
     public static String url;
     public static String username;
     public static String password;
+    public static String driver;
 
     static {
         try {
@@ -19,6 +20,7 @@ public class MyDBProperties {
             url = p.getProperty("db.url");
             username = p.getProperty("db.username");
             password = p.getProperty("db.password");
+            driver = p.getProperty("db.driver");
 
         } catch (IOException e) {
             e.printStackTrace();

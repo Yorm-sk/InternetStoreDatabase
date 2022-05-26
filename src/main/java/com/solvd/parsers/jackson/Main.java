@@ -1,4 +1,4 @@
-package com.solvd.xml_parsers.jackson;
+package com.solvd.parsers.jackson;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

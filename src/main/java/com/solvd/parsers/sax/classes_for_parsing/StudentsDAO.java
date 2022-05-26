@@ -1,4 +1,4 @@
-package com.solvd.xml_parsers.sax.classes_for_parsing;
+package com.solvd.parsers.sax.classes_for_parsing;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

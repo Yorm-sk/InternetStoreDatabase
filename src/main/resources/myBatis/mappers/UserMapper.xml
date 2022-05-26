@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.internet_store.dao.IUserDao">
+    <resultMap id="userResultMap" type="com.solvd.internet_store.models.User">
+        <id property="id" column="id" javaType="long"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="age" column="age" javaType="short"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="userResultMap">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+</mapper>
