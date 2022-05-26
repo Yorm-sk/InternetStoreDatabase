@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.internet_store.dao.ICostumerDao">
+    <resultMap id="costumerResultMap" type="Costumer">
+        <id property="id" column="id" javaType="long"/>
+        <result property="phoneNumber" column="phone_number"/>
+        <association property="user" column="user_id" javaType="User"
+        select="com.solvd.internet_store.dao.IUserDao.getEntity"/>
+        <collection property="orders" javaType="ArrayList" column="id" ofType="Order" select="selectOrdersForCostumer"/>
+    </resultMap>
+
+    <select id="getEntity" resultMap="costumerResultMap">
+        SELECT * FROM costumers WHERE id = #{id}
+    </select>
+
+    <select id="selectOrdersForCostumer" resultType="Order">
+        SELECT id, type, date, delivery_service_id as deliveryServiceId, costumer_id as costumerId
+        FROM orders WHERE costumer_id = #{id}
+    </select>
+
+    <delete id="deleteEntity" parameterType="Costumer">
+        DELETE FROM costumers WHERE id = #{id}
+    </delete>
+
+    <insert id="createEntity" useGeneratedKeys="true" keyProperty="id" parameterType="Costumer">
+       INSERT INTO costumers (phone_number, user_id) VALUES (#{phoneNumber}, #{user.id})
+    </insert>
+
+    <update id="updateEntity" parameterType="Costumer">
+        UPDATE costumers SET phone_number = #{phoneNumber}, user_id = #{user.id}
+        WHERE id = #{id}
+    </update>
+
+    <select id="getCostumers" resultMap="costumerResultMap">
+        SELECT * FROM costumers
+    </select>
+</mapper>

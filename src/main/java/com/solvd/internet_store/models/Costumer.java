@@ -4,21 +4,21 @@ import java.util.List;
 
 public class Costumer {
     private long id;
-    private String phone_number;
+    private String phoneNumber;
     private User user;
     private List<Order> orders;
 
     public Costumer() {
     }
 
-    public Costumer(String phone_number, User user, List<Order> orders) {
-        this.phone_number = phone_number;
+    public Costumer(String phoneNumber, User user, List<Order> orders) {
+        this.phoneNumber = phoneNumber;
         this.user = user;
         this.orders = orders;
     }
 
-    public Costumer(String phone_number, User user) {
-        this.phone_number = phone_number;
+    public Costumer(String phoneNumber, User user) {
+        this.phoneNumber = phoneNumber;
         this.user = user;
     }
 
@@ -30,12 +30,12 @@ public class Costumer {
         this.id = id;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public User getUser() {
@@ -58,7 +58,7 @@ public class Costumer {
     public String toString() {
         return "Costumer{" +
                 "id=" + id + "\n" +
-                "phone_number='" + phone_number + '\'' + "\n" +
+                "phone_number='" + phoneNumber + '\'' + "\n" +
                 "user=" + user + "\n" +
                 "orders=" + orders +
                 '}';

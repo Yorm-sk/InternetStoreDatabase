@@ -13,4 +13,23 @@
     <select id="getEntity" resultMap="userResultMap">
         SELECT * FROM users WHERE id = #{id}
     </select>
+
+    <insert id="createEntity" useGeneratedKeys="true"
+            keyProperty="id" parameterType="User">
+        INSERT INTO users (name, email, age)
+        VALUES (#{name}, #{email}, #{age})
+    </insert>
+
+    <delete id="deleteEntity" parameterType="User">
+        DELETE FROM users WHERE id = #{id}
+    </delete>
+
+    <update id="updateEntity" parameterType="User">
+        UPDATE users SET name = #{name}, email = #{email}, age = #{age}
+        WHERE id = #{id}
+    </update>
+
+    <select id="getUsers" resultMap="userResultMap">
+        SELECT * FROM users
+    </select>
 </mapper>

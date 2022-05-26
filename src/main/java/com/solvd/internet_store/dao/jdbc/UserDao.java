@@ -152,4 +152,9 @@ public class UserDao extends AbstractDao implements IUserDao {
         if (users.size() == 0) LOGGER.warn("\nUserDao list is empty now\n" +
                 "To initialize usersDao list use fillListInUserDao method");
     }
+
+    @Override
+    public List<User> getUsers() {
+        return null;
+    }
 }

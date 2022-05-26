@@ -26,7 +26,7 @@ public class CostumerDao extends AbstractDao implements ICostumerDao {
             setResultSet();
             resultSet.next();
             costumer.setId(resultSet.getLong("id"));
-            costumer.setPhone_number(resultSet.getString("phone_number"));
+            costumer.setPhoneNumber(resultSet.getString("phone_number"));
             setPreparedStatement("SELECT * FROM users WHERE id = ?");
             preparedStatement.setLong(1, resultSet.getLong("user_id"));
             setResultSet();
@@ -109,7 +109,7 @@ public class CostumerDao extends AbstractDao implements ICostumerDao {
         setConnection();
         setPreparedStatement("INSERT INTO costumers (phone_number, user_id) VALUES (?, ?)");
         try {
-            preparedStatement.setString(1, costumer.getPhone_number());
+            preparedStatement.setString(1, costumer.getPhoneNumber());
             preparedStatement.setLong(2, costumer.getUser().getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -140,7 +140,7 @@ public class CostumerDao extends AbstractDao implements ICostumerDao {
         setConnection();
         setPreparedStatement("UPDATE costumers SET phone_number = ?, user_id = ? WHERE id = ?");
         try {
-            preparedStatement.setString(1, costumer.getPhone_number());
+            preparedStatement.setString(1, costumer.getPhoneNumber());
             preparedStatement.setLong(2, costumer.getUser().getId());
             preparedStatement.setLong(3, costumer.getId());
             preparedStatement.executeUpdate();
@@ -149,5 +149,10 @@ public class CostumerDao extends AbstractDao implements ICostumerDao {
         }
         closeAll();
         LOGGER.info("Done...");
+    }
+
+    @Override
+    public List<Costumer> getCostumers() {
+        return null;
     }
 }
