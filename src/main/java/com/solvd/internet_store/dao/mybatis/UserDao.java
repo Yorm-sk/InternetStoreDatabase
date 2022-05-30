@@ -18,6 +18,7 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
     public void createEntity(User user) {
         setMapper();
         mapper.createEntity(user);
+        session.commit();
         closeSession();
     }
 
@@ -25,6 +26,7 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
     public void deleteEntity(User user) {
         setMapper();
         mapper.deleteEntity(user);
+        session.commit();
         closeSession();
     }
 
@@ -32,6 +34,7 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
     public void updateEntity(User user) {
         setMapper();
         mapper.updateEntity(user);
+        session.commit();
         closeSession();
     }
 
