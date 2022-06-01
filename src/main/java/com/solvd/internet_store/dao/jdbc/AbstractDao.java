@@ -1,7 +1,5 @@
 package com.solvd.internet_store.dao.jdbc;
 
-import com.solvd.internet_store.dao.CommonAbstractDao;
-import com.solvd.internet_store.dao.IBaseDao;
 import com.solvd.internet_store.exceptions.ConnectionIsNullException;
 import com.solvd.internet_store.exceptions.PreparedStatementIsNullException;
 import com.solvd.internet_store.utils.SQLConnector;
@@ -13,7 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class AbstractDao extends CommonAbstractDao {
+public abstract class AbstractDao {
     private static final Logger LOGGER = LogManager.getLogger(AbstractDao.class);
     private Connection connection;
     protected ResultSet resultSet;

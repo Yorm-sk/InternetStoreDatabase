@@ -1,5 +1,6 @@
 package com.solvd.internet_store.utils.factories;
 
+import com.solvd.internet_store.dao.IBaseDao;
 import com.solvd.internet_store.dao.mybatis.AbstractDao;
 import com.solvd.internet_store.dao.mybatis.CostumerDao;
 import com.solvd.internet_store.dao.mybatis.UserDao;
@@ -10,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 public class MyBatisFactory extends Factory {
     private final static Logger LOGGER = LogManager.getLogger(MyBatisFactory.class);
 
-    public AbstractDao createDao(ModelType type){
+    public IBaseDao createDao(ModelType type){
         switch (type){
             case USER:
                 return new UserDao();
