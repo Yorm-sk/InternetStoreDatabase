@@ -1,5 +1,7 @@
 package com.solvd.internet_store.dao.jdbc;
 
+import com.solvd.internet_store.dao.CommonAbstractDao;
+import com.solvd.internet_store.dao.IBaseDao;
 import com.solvd.internet_store.exceptions.ConnectionIsNullException;
 import com.solvd.internet_store.exceptions.PreparedStatementIsNullException;
 import com.solvd.internet_store.utils.SQLConnector;
@@ -11,20 +13,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class AbstractDao {
+public abstract class AbstractDao extends CommonAbstractDao {
     private static final Logger LOGGER = LogManager.getLogger(AbstractDao.class);
     private Connection connection;
     protected ResultSet resultSet;
     protected PreparedStatement preparedStatement;
 
     public void setConnection() {
-        connection =  SQLConnector.getInstance().createConnection();
+        connection = SQLConnector.getInstance().createConnection();
     }
 
     public void setPreparedStatement(String sqlQuery) {
         try {
             if (connection == null) throw new ConnectionIsNullException();
-            preparedStatement =  connection.prepareStatement(sqlQuery);
+            preparedStatement = connection.prepareStatement(sqlQuery);
         } catch (SQLException | ConnectionIsNullException e) {
             LOGGER.warn(e.getMessage());
         }
@@ -33,13 +35,13 @@ public abstract class AbstractDao {
     public void setPreparedStatement(String sqlQuery, int typeScrollSensitivity, int typeReadSensitivity) {
         try {
             if (connection == null) throw new ConnectionIsNullException();
-            preparedStatement =  connection.prepareStatement(sqlQuery, typeScrollSensitivity, typeReadSensitivity);
+            preparedStatement = connection.prepareStatement(sqlQuery, typeScrollSensitivity, typeReadSensitivity);
         } catch (SQLException | ConnectionIsNullException e) {
             LOGGER.warn(e.getMessage());
         }
     }
 
-    public void setResultSet(){
+    public void setResultSet() {
         try {
             if (preparedStatement == null) throw new PreparedStatementIsNullException();
             resultSet = preparedStatement.executeQuery();
@@ -48,7 +50,7 @@ public abstract class AbstractDao {
         }
     }
 
-    public void closeAll(){
+    public void closeAll() {
         if (resultSet != null) {
             try {
                 resultSet.close();
@@ -56,7 +58,7 @@ public abstract class AbstractDao {
                 LOGGER.warn(e.getMessage());
             }
         }
-        if (preparedStatement != null){
+        if (preparedStatement != null) {
             try {
                 preparedStatement.close();
             } catch (SQLException e) {
@@ -64,7 +66,7 @@ public abstract class AbstractDao {
             }
         }
 
-        if (connection != null){
+        if (connection != null) {
             try {
                 connection.close();
             } catch (SQLException e) {
