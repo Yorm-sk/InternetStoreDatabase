@@ -1,8 +1,13 @@
 package com.solvd.internet_store.models;
 
+import com.solvd.internet_store.utils.listener.ActionListener;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Objects;
 
-public class User {
+public class User extends AbstractModel implements ActionListener {
+    private final static Logger LOGGER = LogManager.getLogger(User.class);
     private long id;
     private String name;
     private String email;
@@ -77,5 +82,12 @@ public class User {
                 ", email='" + email + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public void doSomeActionOnEvent() {
+        LOGGER.info("Welcome to our shop " + this.name + "!");
+        if (this.age <18) LOGGER.info("Wow, you so young");
+        if (this.age >50) LOGGER.info("My regards to you!");
     }
 }

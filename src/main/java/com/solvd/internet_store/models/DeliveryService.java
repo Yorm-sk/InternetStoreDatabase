@@ -2,7 +2,7 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class DeliveryService {
+public class DeliveryService extends AbstractModel{
     private long id;
     private String name;
     private DeliveryWorker deliveryWorker;

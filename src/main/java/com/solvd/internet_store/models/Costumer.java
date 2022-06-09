@@ -2,7 +2,7 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class Costumer {
+public class Costumer extends AbstractModel{
     private long id;
     private String phoneNumber;
     private User user;

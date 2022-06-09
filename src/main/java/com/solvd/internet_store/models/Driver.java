@@ -2,13 +2,22 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class Driver {
+public class Driver extends AbstractModel{
     private long id;
     private String experience;
     private User user;
     private List<Vehicle> vehicles;
 
     public Driver() {
+    }
+
+    public Driver(long id) {
+        this.id = id;
+    }
+
+    public Driver(String experience, User user) {
+        this.experience = experience;
+        this.user = user;
     }
 
     public Driver(long id, String experience, User user, List<Vehicle> vehicles) {

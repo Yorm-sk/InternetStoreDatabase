@@ -1,0 +1,9 @@
+{
+  "name" : "Andriy",
+  "height" : 182,
+  "weight" : 67,
+  "field" : {
+    "size" : 10,
+    "drugs" : [ "weed", "сannabis" ]
+  }
+}

@@ -1,6 +1,6 @@
 package com.solvd.internet_store.models;
 
-public class DeliveryWorker {
+public class DeliveryWorker extends AbstractModel{
     private long id;
     private User user;
 

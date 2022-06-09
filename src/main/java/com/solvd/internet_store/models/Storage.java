@@ -2,7 +2,7 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class Storage {
+public class Storage extends AbstractModel{
     private long id;
     private String name;
     private long capacity;

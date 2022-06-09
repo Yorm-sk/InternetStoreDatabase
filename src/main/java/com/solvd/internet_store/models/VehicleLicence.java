@@ -1,12 +1,18 @@
 package com.solvd.internet_store.models;
 
-public class VehicleLicence {
+public class VehicleLicence extends AbstractModel{
     private long id;
     private int number;
     private String dateOfExperience;
     private Driver driver;
 
     public VehicleLicence() {
+    }
+
+    public VehicleLicence(int number, String dateOfExperience, Driver driver) {
+        this.number = number;
+        this.dateOfExperience = dateOfExperience;
+        this.driver = driver;
     }
 
     public VehicleLicence(long id, int number, String dateOfExperience, Driver driver) {

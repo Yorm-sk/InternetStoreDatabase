@@ -1,0 +1,25 @@
+[ {
+  "name" : "Dima",
+  "height" : 190,
+  "weight" : 62,
+  "field" : {
+    "size" : 6,
+    "drugs" : [ "weed, poppy" ]
+  }
+}, {
+  "name" : "Artur",
+  "height" : 141,
+  "weight" : 76,
+  "field" : {
+    "size" : 8,
+    "drugs" : [ "cannabis, poppy" ]
+  }
+}, {
+  "name" : "Lera",
+  "height" : 176,
+  "weight" : 65,
+  "field" : {
+    "size" : 19,
+    "drugs" : [ "cannabis, poppy", "weed" ]
+  }
+} ]

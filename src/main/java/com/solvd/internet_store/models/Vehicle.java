@@ -2,7 +2,7 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class Vehicle {
+public class Vehicle extends AbstractModel{
     private long id;
     private String type;
     private long driverId;
@@ -10,6 +10,12 @@ public class Vehicle {
     private List<VehicleService> vehicleServices;
 
     public Vehicle() {
+    }
+
+    public Vehicle(String type, long driverId, long deliveryServiceId) {
+        this.type = type;
+        this.driverId = driverId;
+        this.deliveryServiceId = deliveryServiceId;
     }
 
     public Vehicle(String type, long driverId, long deliveryServiceId, List<VehicleService> vehicleServices) {

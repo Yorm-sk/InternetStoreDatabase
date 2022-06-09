@@ -2,7 +2,7 @@ package com.solvd.internet_store.models;
 
 import java.util.List;
 
-public class Order {
+public class Order extends AbstractModel{
 
     private long id;
     private String type;
@@ -12,6 +12,13 @@ public class Order {
     private List<Product> products;
 
     public Order() {
+    }
+
+    public Order(String type, String date, long deliveryServiceId, long costumerId) {
+        this.type = type;
+        this.date = date;
+        this.deliveryServiceId = deliveryServiceId;
+        this.costumerId = costumerId;
     }
 
     public Order(String type, String date, long deliveryServiceId, long costumerId,
