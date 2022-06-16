@@ -86,8 +86,6 @@ public class User extends AbstractModel implements ActionListener {
 
     @Override
     public void doSomeActionOnEvent() {
-        LOGGER.info("Welcome to our shop " + this.name + "!");
-        if (this.age <18) LOGGER.info("Wow, you so young");
-        if (this.age >50) LOGGER.info("My regards to you!");
+        LOGGER.info("New user was created, now it is more of us!");
     }
 }

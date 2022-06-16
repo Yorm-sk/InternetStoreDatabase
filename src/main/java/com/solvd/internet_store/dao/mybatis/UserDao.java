@@ -19,7 +19,6 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
         setMapper();
         User user = mapper.getEntity(id);
         addListener(user);
-        for (ActionListener ls : listeners) ls.doSomeActionOnEvent();
         closeSession();
         return user;
     }
@@ -29,6 +28,7 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
         setMapper();
         mapper.createEntity(user);
         session.commit();
+        for (ActionListener ls : listeners) ls.doSomeActionOnEvent();
         closeSession();
     }
 
@@ -53,7 +53,6 @@ public class UserDao extends AbstractDao<IUserDao> implements IUserDao {
         setMapper();
         List<User> users= mapper.getUsers();
         listeners.addAll(users);
-        for (ActionListener ls : listeners) ls.doSomeActionOnEvent();
         closeSession();
         return users;
     }
