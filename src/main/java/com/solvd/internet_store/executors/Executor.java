@@ -18,5 +18,6 @@ public class Executor {
         LOGGER.info(dao.getEntity(1));
         User user = (User) Builder.createModel(ModelType.USER);
         LOGGER.info(user);
+        dao.createEntity(user);
     }
 }

@@ -2,8 +2,10 @@ package com.solvd.internet_store.executors.user;
 
 import com.solvd.internet_store.dao.IUserDao;
 import com.solvd.internet_store.dao.mybatis.UserDao;
+import com.solvd.internet_store.enums.ModelType;
 import com.solvd.internet_store.models.User;
 import com.solvd.internet_store.utils.MyBatisSQLFactory;
+import com.solvd.internet_store.utils.builders.Builder;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,9 +22,11 @@ public class MyBatisExecutor {
 
         LOGGER.info(userDao.getUsers());
 
-            User userToAdd = new User("Vasya", "vas@gmail.com", (short) 29);
-           userDao.createEntity(userToAdd);
+        User userToAdd = new User("Vasya", "vas@gmail.com", (short) 29);
+        userDao.createEntity(userToAdd);
 
+        User userFromBuilder = (User) Builder.createModel(ModelType.USER);
+        LOGGER.info(userFromBuilder);
 //            User userToUpdate= userDao.getEntity(18);
 //            userToUpdate.setAge((short) 21);
 //            userToUpdate.setEmail("mams@i.ia");
